@@ -4,9 +4,9 @@
 /* more headers goes there */
 /**
  * main - Entry point
- * this will display the las digit and compar it
- * Return Always 0 (Success)
- */
+ * somthing
+ * Return: Always 0 (Success)
+  */
 /* betty style doc for function main goes there */
 int main(void)
 {
