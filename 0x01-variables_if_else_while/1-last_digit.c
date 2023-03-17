@@ -5,7 +5,7 @@
 /**
  * main - Entry point
  * this will test
- * Returne Always 0.
+ * Return Always 0.
  */
 /* betty style doc for function main goes there */
 int main(void)
