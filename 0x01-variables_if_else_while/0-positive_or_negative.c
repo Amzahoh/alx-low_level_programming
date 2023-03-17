@@ -4,8 +4,9 @@
 /* more headers goes there */
 /**
  * main - Entry point
- * this code return zero or positif or negatif
- * Returne Always 0 (Success)
+ * This function generates a random number and prints whether it's
+ * positive, negative, or zero.
+ *The return value is always 0.
  */
 /* betty style doc for function main goes there */
 int main(void)
