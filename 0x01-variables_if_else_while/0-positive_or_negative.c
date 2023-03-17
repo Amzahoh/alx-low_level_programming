@@ -6,7 +6,7 @@
  * main - Entry point
  * This function generates a random number and prints whether it's
  * positive, negative, or zero.
- *The return value is always 0.
+ * Return: Always 0.
  */
 /* betty style doc for function main goes there */
 int main(void)
