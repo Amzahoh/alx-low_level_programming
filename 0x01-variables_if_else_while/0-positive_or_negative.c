@@ -4,7 +4,7 @@
 /* more headers goes there */
 /**
  * main - Entry point
- * this code return zero or positif or negatif 
+ * this code return zero or positif or negatif
  * Returne Always 0 (Success)
  */
 /* betty style doc for function main goes there */
