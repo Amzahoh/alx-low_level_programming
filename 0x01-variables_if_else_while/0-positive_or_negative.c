@@ -4,7 +4,7 @@
 /* more headers goes there */
 /**
  * main - Entry point
- * 
+ * this code return zero or positif or negatif 
  * Returne Always 0 (Success)
  */
 /* betty style doc for function main goes there */
@@ -20,6 +20,6 @@ int main(void)
 	else if (n == 0)
 		printf("%d is zero\n", n);
 	else
-		printf("%d is negatif\n", n);
+		printf("%d is negative\n", n);
 	return (0);
 }
