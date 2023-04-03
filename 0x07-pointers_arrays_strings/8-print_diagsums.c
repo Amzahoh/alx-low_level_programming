@@ -10,18 +10,19 @@
  */
 void print_diagsums(int *a, int size)
 {
-	int x = 0;
-	int y = size * size;
+	int i = 0;
+	int j = size * size;
 	int diag1 = 0;
 	int diag2 = 0;
 
-	while (x < y)
+	while (i < j)
 	{
-		if (x % (size + 1) == 0)
-			diag1 += *(a + x);
-		if (x > 0 && x < (y - 1) && x % (size - 1) == 0)
-			diag2 += *(a + x);
-		x++;
+		if (i % (size + 1) == 0)
+			diag1 += *(a + i);
+		if (i > 0 && i < (j - 1) && i % (size - 1) == 0)
+			diag2 += *(a + i);
+		i++;
 	}
-	printf("%x, %x\n", diag1, diag2);
+
+	printf("%i, %i\n", diag1, diag2);
 }
