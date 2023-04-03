@@ -5,7 +5,7 @@
  *@s: is a pointer
  *@c: character to search
  * Return: thepointer s or null if unfound
-i */
+ */
 char *_strchr(char *s, char c)
 {
 	int i = 0, len;
