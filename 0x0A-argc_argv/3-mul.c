@@ -9,7 +9,7 @@
 int main(int argc, __attribute__((unused)) char *argv[])
 {
 	int a, b, mult;
-	
+
 	if (argc > 2)
 	{	a = atoi(argv[1]);
 		b = atoi(argv[2]);
@@ -17,7 +17,7 @@ int main(int argc, __attribute__((unused)) char *argv[])
 		printf("%d\n", mult);
 		return (0);
 	}
-	else			
+	else
 		printf("Error\n");
 	return (1);
 }
