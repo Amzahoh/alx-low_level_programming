@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include "main.h"
 /**
  * main - entry point
  * @argc: count the number of argment
@@ -8,11 +7,6 @@
  */
 int main(int argc, __attribute__((unused)) char *argv[])
 {
-	if (argc < 1 )
+	printf("%d\n", argc - 1);
 		return (0);
-	else
-	{_putchar((argc-1) + '0');
-	}
-	_putchar('\n');
-	return (0);
 }
