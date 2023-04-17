@@ -1,5 +1,5 @@
+#include <stdio.h>
 #include "dog.h"
-#include<stddef.h>
 /**
  * print_dog - function that initiliase
  * @d: pointer to the adress of the structure
