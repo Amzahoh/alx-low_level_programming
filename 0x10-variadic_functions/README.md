@@ -1,0 +1,1 @@
+welcom to variadic function
