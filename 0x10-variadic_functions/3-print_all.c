@@ -4,10 +4,10 @@
 /**
  * print_all - a function that prints anything
  * @format: a list of types of arguments passed to the function
- * @c: char type
- * @i: integer type
- * @f: float type
- * @s: char * (if the string is NULL, print (nil) instead
+ * c: char type
+ * i: integer type
+ * f: float type
+ * s: char * (if the string is NULL, print (nil) instead
  * Return: nothing
  */
 void print_all(const char * const format, ...)
