@@ -1,10 +1,11 @@
 #include "lists.h"
 #include <stdio.h>
 /**
- * print_list - function that prints all the elements of a list_t list.
- * @h: list_t head node pointerof the the syngly lnked list
- * Return: number of nodes
- * */
+ * print_list - print list
+ * @h: the  head of list
+ * Return: elements number
+ */
+
 size_t print_list(const list_t *h)
 {
 	int count = 0;
