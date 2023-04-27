@@ -9,6 +9,13 @@
 int print_string(va_list args)
 {
     char *str = va_arg(args, char *);
+
+    if (str == NULL)
+    {
+        _puts("(null)");
+        return 6;
+    }
+
     _puts(str);
     return (_strlen(str));
 }
