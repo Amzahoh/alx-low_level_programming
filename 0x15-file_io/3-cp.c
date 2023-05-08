@@ -1,68 +1,90 @@
 #include "main.h"
+#define BUF_SIZE 1024
+
 /**
- * main - program that copies the content of a file to another file.
- * @argc: number of commandline arguments.
- * @argv: array of commandline arguments.
- * Return: 0 on success.
- */
-int main(int argc, char *argv[])
+* main - main
+* @argc: number of arguments
+* @argv: a pointer point to the array of arguments
+* Return: Always 0
+**/
+
+int main(int argc, char **argv)
 {
-	int file_from, file_to, re, wr;
-	char buf[1024];
+	int f0, f1, res0, res1;
+	char *buffer;
 
 	if (argc != 3)
 	{
 		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 		exit(97);
 	}
-	file_from = open(argv[1], O_RDONLY);
-	check_error(file_from, 1, argv[1]);
+	buffer = malloc(sizeof(char) * BUF_SIZE);
+	if (!buffer)
+		return (0);
 
-	file_to = open(argv[2], O_CREAT | O_TRUNC | O_WRONLY | O_APPEND, 00664);
-	check_error(1, file_to, argv[2]);
+	f1 = open(argv[1], O_RDONLY);
+	error_98(f1, buffer, argv[1]);
+	f0 = open(argv[2], O_WRONLY | O_TRUNC | O_CREAT, 0664);
+	error_99(f0, buffer, argv[2]);
 	do {
-		re = read(file_from, buf, 1024);
-		check_error(re, 1, argv[1]);
-
-		wr = write(file_to, buf, re);
-		check_error(1, wr, argv[2]);
-
-	} while (re > 0);
-	close_fd(file_to);
-	close_fd(file_from);
+		res0 = read(f1, buffer, BUF_SIZE);
+		if (res0 == 0)
+			break;
+		error_98(res0, buffer, argv[1]);
+		res1 = write(f0, buffer, res0);
+		error_99(res1, buffer, argv[2]);
+	} while (res1 >= BUF_SIZE);
+	res0 = close(f0);
+	error_100(res0, buffer);
+	res0 = close(f1);
+	error_100(res0, buffer);
+	free(buffer);
 	return (0);
 }
+
 /**
- * close_fd - closes a file descriptor(fd).
- * @fd: fd to be closed.
- * Return: void
- */
-void close_fd(int fd)
+* error_98 - checks error 98
+* @f0: the value to check
+* @buffer: the buffer
+* @argv: argument
+**/
+void error_98(int f0, char *buffer, char *argv)
 {
-	if (close(fd) < 0)
+
+	if (f0 < 0)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %i\n", fd);
-		exit(100);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv);
+		free(buffer);
+		exit(98);
+	}
+}
+
+/**
+* error_99 - checks error 99
+* @f0: value to check
+* @buffer: the buffer
+* @argv: argument
+*/
+void error_99(int f0, char *buffer, char *argv)
+{
+	if (f0 < 0)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv);
+		free(buffer);
+		exit(99);
 	}
 }
 /**
- * check_error - checks if syscall function returns an error
- * @file_from: fd input 1
- * @file_to: fd input 2
- * @filename: filename
- * Return: void
- */
-void check_error(int file_from, int file_to, char *filename)
+* error_100 - checks error 100
+* @f0: the value to check
+* @buffer: the buffer
+*/
+void error_100(int f0, char *buffer)
 {
-	if (file_from < 0)
+	if (f0 < 0)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", filename);
-		exit(98);
-	}
-
-	if (file_to < 0)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", filename);
-		exit(99);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %i\n", f0);
+		free(buffer);
+		exit(100);
 	}
 }
